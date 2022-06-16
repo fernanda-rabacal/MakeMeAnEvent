@@ -1,6 +1,6 @@
 interface Props{
   className?: string,
-  type: any,
+  type?: any,
   value: any,
   onClick?: () => void
 }
