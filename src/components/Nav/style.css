@@ -1,0 +1,39 @@
+.nav-container {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  background-color: rgb(36, 48, 114);
+  
+
+  font-family: 'DM Sans', sans-serif;
+  padding-inline: 2.5rem;
+  box-sizing: border-box;
+  color: #FFF;
+}
+
+.nav-container h1 {
+  font-size: 2.5rem;
+}
+
+.nav-container p {
+  font-size: 2rem;
+  padding-inline: 1rem;
+}
+
+.nav-container img {
+  padding-left: 1.5rem;
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.nav-container p:nth-of-type(1) {
+  border-right: 2px solid #aaa;
+}
+.nav-container div {
+ display: flex;
+ align-items: center;
+}
