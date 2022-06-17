@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MakeMeAnEvent/static/css/main.b74d09a4.css",
+    "main.js": "/MakeMeAnEvent/static/js/main.41d499dd.js",
+    "index.html": "/MakeMeAnEvent/index.html",
+    "static/media/login.svg": "/MakeMeAnEvent/static/media/login.7c5380fac68870bcb10508ca4eeffdd6.svg",
+    "static/media/global.svg": "/MakeMeAnEvent/static/media/global.d56257354c9737bb9e32479ea9fb0db6.svg",
+    "main.b74d09a4.css.map": "/MakeMeAnEvent/static/css/main.b74d09a4.css.map",
+    "main.41d499dd.js.map": "/MakeMeAnEvent/static/js/main.41d499dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b74d09a4.css",
+    "static/js/main.41d499dd.js"
+  ]
+}
