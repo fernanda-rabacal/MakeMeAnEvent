@@ -8,7 +8,7 @@
   border-radius: 5px;
   width: 100%;
   height: 15rem;
-  background-color: rgb(77, 99, 221);;
+  background-color: rgb(110, 132, 255);;
 }
 
 .event-content{
@@ -27,12 +27,36 @@
   margin: 0;
 }
 
-.delete-event{
-  font-size: 2rem;
+.delete-event, 
+.update-event, 
+.finish-event{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   border-radius: 50px;
   border: none;
   width: 3rem;
   height: 3rem;
-  background-color: rgb(97, 0, 0);
+}
+
+.delete-event{
+  background-color: rgb(190, 27, 27);
+  font-size: 2rem;
+}
+
+.update-event{
+  background-color: rgb(249, 252, 82);
+}
+
+.finish-event{
+  background-color: rgb(2, 189, 2);
+}
+
+.buttons{
+  height: 100%;
+  margin-top: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem
 }

@@ -33,6 +33,7 @@ export function App(){
     setEvents(updatedEvents)
   }
 
+ 
   return (
     <div>
       <Nav/>
@@ -82,9 +83,9 @@ export function App(){
         </label>
         </div>
         {events.map((ev: any) => <Event
-        key={ev.id}
+        key={ev.id} id={ev.name.toString()}
       nome={ev.name} inicio={ev.inicio}
-      final={ev.final} descricao={ev.descricao} delete={() => deleteEvent(ev.id)}
+      final={ev.final} descricao={ev.descricao} delete={() => deleteEvent(ev.id)} complete={ev.completed}
       />)}
 
       </div>
