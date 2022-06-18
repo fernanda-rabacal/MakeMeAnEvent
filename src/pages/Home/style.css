@@ -10,11 +10,6 @@
   text-transform: uppercase;
   font-size: 2rem;
 }
-.subtitle {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
 
 .dot{
   width: 1.5rem;
@@ -25,7 +20,8 @@
 .dot-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: .5rem;
   width: 100%;
 }
 
@@ -41,7 +37,6 @@
   background-color: rgb(120, 212, 101);
 }
 
-
 .my-events{
   display: flex;
   flex-direction: column;
@@ -54,6 +49,28 @@
   box-sizing:border-box;
   text-transform: uppercase;
   font-size: 1.2rem;
+}
+
+.options {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.options select {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  
 }
 
 .App{
