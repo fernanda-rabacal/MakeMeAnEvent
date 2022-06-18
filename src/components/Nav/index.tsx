@@ -1,6 +1,6 @@
 import './style.css'
-import global from '../../assets/global.svg'
-import login from '../../assets/login.svg'
+import globePrint from '../../assets/globePrint.svg'
+import loginPrint from '../../assets/loginPrint.svg'
 
 export function Nav(){
   return(
@@ -8,9 +8,9 @@ export function Nav(){
       <nav className='nav-container'>
         <h1 aria-label='Logo do site'>MakeMeAnEvent</h1>
         <div>
-          <img src={login} alt="login logo" />
+          <img src={globePrint} alt="login logo" />
           <p>Login</p>
-          <img src={global} alt='a globo to reference a world' />
+          <img src={loginPrint} alt='a globo to reference a world' />
           <p>English</p>
         </div>
       </nav>

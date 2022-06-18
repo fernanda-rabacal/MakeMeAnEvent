@@ -7,6 +7,7 @@ import {IEventContainer} from '../../utils/types';
 export function Event({ 
   id,
   eventName,
+  eventCreation,
   eventEnd,
   eventStart,
   eventDescription,
@@ -15,8 +16,6 @@ export function Event({
   updateEvent,
   finishEvent,
 } : IEventContainer){  
-
-  const now = new Date().toLocaleString()
 
   /* function verifyCompletedEvent(){
     const container: any = document.getElementById(props.id)
@@ -35,10 +34,10 @@ export function Event({
       <div className="event-content">
         <h2>{eventName}</h2>
         <h4>{eventDescription}</h4>
-        <p>Data de Criação: {now}</p>
+        <p>Data de Criação: {eventCreation}</p>
         <div className="dates">
-          <p>Início: {eventStart.toLocaleString()}</p>
-          <p>Termina em: {eventEnd.toLocaleString()}</p>
+          <p>Início: {eventStart.toLocaleString("pt-br")}</p>
+          <p>Termina em: {eventEnd.toLocaleString("pt-br")}</p>
         </div>
       </div>
       <div className="buttons">

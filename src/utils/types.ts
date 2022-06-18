@@ -12,6 +12,7 @@ export interface IEventContainer {
     completeEvent: boolean,
     eventStart?: any,
     eventEnd?: any,
+    eventCreation?: any,
     eventDescription?: string,
     deleteEvent?: () => void,
     updateEvent?: () => void,
