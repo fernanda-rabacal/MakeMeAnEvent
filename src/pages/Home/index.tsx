@@ -1,5 +1,5 @@
 import './style.css';
-import { useState} from "react"; 
+import { useState } from "react"; 
 import {Nav} from '../../components/Nav';
 import {Button } from '../../components/Buttons';
 import {Event} from '../../components/EventContainer'
@@ -12,8 +12,10 @@ export function Home(){
   const [descEvent, setDescEvent] = useState<string>("")
   const [events, setEvents] = useState<any>([])
   const [search, setSearch] = useState<string>("")
-  const [selectedValue, setSelectedValue] = useState<string>("Data de Início")
+  const [selectedValue, setSelectedValue] = useState<string>("")
  
+
+  
 
   const now = new Date()
 
@@ -49,21 +51,20 @@ export function Home(){
   }
   
   const order = (e: any) =>{
-    setSelectedValue( e.target.value )
-
     selectedValue === "Data de Início"? orderByStart() :
-    selectedValue === "Data Final" ? orderByEnd() : orderByCreation() 
+    selectedValue === "Data de Criação" ? orderByCreation() : orderByEnd()  
 
   }
 
   const orderByStart = () => {
-    events.sort((a: any, b: any) => +a.start < +b.start ? -1 : 1)}
+    events.sort((a: any, b: any) => +a.start > +b.start ? -1 : 1
+    )}
 
   const orderByEnd = () => {
-    events.sort((a: any, b: any) =>  +a.end < +b.end ? -1 : 1)}
+    events.sort((a: any, b: any) =>  +a.end > +b.end ? -1 : 1)}
 
   const orderByCreation = () => {
-    events.sort((a: any, b: any) =>  +a.creation < +b.creation ? -1 : 1)} 
+    events.sort((a: any, b: any) =>  +a.creation > +b.creation ? -1 : 1)} 
  
   return (
     <div>
@@ -118,7 +119,13 @@ export function Home(){
           <div className='options'>
             <label>
               Organizar por:
-              <select value={selectedValue} onChange={(e) => order(e)} >
+              <select 
+              onChange={(e) => {   
+                setSelectedValue(e.target.value)
+                console.log(e.target.value)   
+                console.log(selectedValue)
+                order(e)
+                }}>
                 <option value='Data de Início'>Data de Início</option>
                 <option value='Data Final'>Data Final</option>
                 <option value='Data de Criação'>Data de Criação</option>
