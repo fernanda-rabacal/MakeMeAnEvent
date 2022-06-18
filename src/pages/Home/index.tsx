@@ -12,6 +12,7 @@ export function Home(){
   const [descEvent, setDescEvent] = useState<string>("")
   const [events, setEvents] = useState<any>([])
   const [search, setSearch] = useState<string>("")
+  const [selectedValue, setSelectedValue] = useState<string>("Data de Início")
  
 
   const now = new Date()
@@ -38,7 +39,6 @@ export function Home(){
     setEvents(updatedEvents)
   }
 
-  
 
   function findEvent(event: any){
     if(search === ''){
@@ -47,14 +47,23 @@ export function Home(){
       return event
     }
   }
-    
+  
+  const order = (e: any) =>{
+    setSelectedValue( e.target.value )
+
+    selectedValue === "Data de Início"? orderByStart() :
+    selectedValue === "Data Final" ? orderByEnd() : orderByCreation() 
+
+  }
+
   const orderByStart = () => {
-    events.sort(function (a: any, b: any) {
-      return +a.start < +b.start ? -1 : 1;
-  })}
+    events.sort((a: any, b: any) => +a.start < +b.start ? -1 : 1)}
 
   const orderByEnd = () => {
     events.sort((a: any, b: any) =>  +a.end < +b.end ? -1 : 1)}
+
+  const orderByCreation = () => {
+    events.sort((a: any, b: any) =>  +a.creation < +b.creation ? -1 : 1)} 
  
   return (
     <div>
@@ -109,10 +118,10 @@ export function Home(){
           <div className='options'>
             <label>
               Organizar por:
-              <select>
-                <option onClick={orderByStart}>Data de Início</option>
-                <option onClick={orderByEnd}>Data Final</option>
-                <option>Data de Criação</option>
+              <select value={selectedValue} onChange={(e) => order(e)} >
+                <option value='Data de Início'>Data de Início</option>
+                <option value='Data Final'>Data Final</option>
+                <option value='Data de Criação'>Data de Criação</option>
               </select>
             </label>
 
@@ -124,7 +133,6 @@ export function Home(){
           {events.filter((event: any) => findEvent(event)).map((event: any) => 
           <Event 
           key={event.id} 
-          id={event.name.toString()}
           eventName={event.name} 
           eventStart={event.start}
           eventEnd={event.end} 

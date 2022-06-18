@@ -5,7 +5,6 @@ import { Button } from '../Buttons';
 import {IEventContainer} from '../../utils/types';
 
 export function Event({ 
-  id,
   eventName,
   eventCreation,
   eventEnd,
@@ -30,7 +29,7 @@ export function Event({
  */
 
   return (
-    <div id={id} className="event-container">
+    <div className="event-container">
       <div className="event-content">
         <h2>{eventName}</h2>
         <h4>{eventDescription}</h4>

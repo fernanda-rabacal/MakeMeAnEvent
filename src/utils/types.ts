@@ -3,12 +3,11 @@ export interface IButton {
     type?: any,
     style?: any,
     value: string,
-    onClick?: () => any,
+    onClick?: () => void,
 }
 
 export interface IEventContainer {
     eventName: string,
-    id: string,
     completeEvent: boolean,
     eventStart?: any,
     eventEnd?: any,
@@ -18,3 +17,4 @@ export interface IEventContainer {
     updateEvent?: () => void,
     finishEvent?: () => void
 }
+
