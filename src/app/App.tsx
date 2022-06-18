@@ -1,5 +1,5 @@
 import './style.css';
-import { useState} from "react"; 
+import { useState, useEffect} from "react"; 
 import {Nav} from '../components/Nav';
 import {Button } from '../components/Button';
 import {Event} from '../components/Event'
@@ -11,6 +11,11 @@ export function App(){
   const [dateFinal, setDateFinal] = useState<any>(null)
   const [descEvent, setDescEvent] = useState<string>("")
   const [events, setEvents] = useState<any>([])
+  const [search, setSearch] = useState<string>("")
+ 
+  useEffect(() => {
+    setEvents(events);
+  }, [])
 
 
    const handleSubmit = (e: any) =>{
@@ -32,6 +37,17 @@ export function App(){
     
     setEvents(updatedEvents)
   }
+
+  
+
+  function findEvent(event: any){
+    if(search === ''){
+      return event
+    } else if (event.name.toLowerCase().indexOf(search) !== -1){
+      return event
+    }
+  }
+    
 
  
   return (
@@ -79,14 +95,21 @@ export function App(){
         <p>Realizado</p>
         </div>
         <label>
-        <input type="search" placeholder='Pesquisar...'/>
+        <input type="searchbar" 
+        onChange={(e) => setSearch(e.target.value.toLowerCase())}
+        placeholder='Pesquisar...'/>
         </label>
         </div>
-        {events.map((ev: any) => <Event
-        key={ev.id} id={ev.name.toString()}
-      nome={ev.name} inicio={ev.inicio}
-      final={ev.final} descricao={ev.descricao} delete={() => deleteEvent(ev.id)} complete={ev.completed}
-      />)}
+        {events.filter((ev: any) => findEvent(ev)).map((ev: any) => <Event
+        key={ev.id} 
+        id={ev.name.toString()}
+        nome={ev.name} 
+        inicio={ev.inicio}
+        final={ev.final} 
+        descricao={ev.descricao} 
+        delete={() => deleteEvent(ev.id)} 
+        complete={ev.completed}
+        />)}
 
       </div>
       </div>
