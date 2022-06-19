@@ -135,7 +135,7 @@ export function Home(){
           
           {events.filter((event: any) => findEvent(event)).map((event: any) => 
           <Event 
-          key={event.id} 
+          key={event.id}
           eventName={event.name} 
           eventStart={event.start}
           eventEnd={event.end} 
