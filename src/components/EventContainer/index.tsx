@@ -1,7 +1,6 @@
 import './style.css';
 
 import { Button } from '../Buttons';
-
 import {IEventContainer} from '../../utils/types';
 
 export function Event({ 
@@ -14,22 +13,10 @@ export function Event({
   deleteEvent,
   updateEvent,
   finishEvent,
-} : IEventContainer){  
-
-  /* function verifyCompletedEvent(){
-    const container: any = document.getElementById(props.id)
-    
-    if(props.complete){
-      props.complete = false
-      container.style.backgroundColor = "gray"
-    } else{
-      container.style.backgroundColor = "green"
-    }
-  }
- */
+} : IEventContainer){ 
 
   return (
-    <div className="event-container">
+    <div style={{backgroundColor: completeEvent ? 'rgb(120, 212, 101)' : ""}} className="event-container">
       <div className="event-content">
         <h2>{eventName}</h2>
         <h4>{eventDescription}</h4>

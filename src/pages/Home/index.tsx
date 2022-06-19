@@ -1,5 +1,5 @@
 import './style.css';
-import { useState } from "react"; 
+import {useState, useEffect} from "react"; 
 import {Nav} from '../../components/Nav';
 import {Button } from '../../components/Buttons';
 import {Event} from '../../components/EventContainer'
@@ -12,13 +12,11 @@ export function Home(){
   const [descEvent, setDescEvent] = useState<string>("")
   const [events, setEvents] = useState<any>([])
   const [search, setSearch] = useState<string>("")
-  const [selectedValue, setSelectedValue] = useState<string>("")
+  const [selectedValue, setSelectedValue] = useState<string>("Data de Início")
  
-
-  
+  useEffect(() => console.log("..."), [])
 
   const now = new Date()
-
   
    const handleSubmit = (e: any) =>{
     e.preventDefault()
@@ -51,21 +49,21 @@ export function Home(){
   }
   
   const order = (e: any) =>{
+    setSelectedValue(e.target.value)
     selectedValue === "Data de Início"? orderByStart() :
     selectedValue === "Data de Criação" ? orderByCreation() : orderByEnd()  
 
   }
 
   const orderByStart = () => {
-    events.sort((a: any, b: any) => +a.start > +b.start ? -1 : 1
-    )}
+    events.sort((a: any, b: any) => +a.start < +b.start ? -1 : 1)}
 
   const orderByEnd = () => {
     events.sort((a: any, b: any) =>  +a.end > +b.end ? -1 : 1)}
 
   const orderByCreation = () => {
-    events.sort((a: any, b: any) =>  +a.creation > +b.creation ? -1 : 1)} 
- 
+    events.sort((a: any, b: any) =>  +a.creation < +b.creation ? -1 : 1)} 
+
   return (
     <div>
       <Nav/>
@@ -120,10 +118,8 @@ export function Home(){
             <label>
               Organizar por:
               <select 
-              onChange={(e) => {   
-                setSelectedValue(e.target.value)
-                console.log(e.target.value)   
-                console.log(selectedValue)
+              id="selectOptions"
+              onChange={(e) => { 
                 order(e)
                 }}>
                 <option value='Data de Início'>Data de Início</option>
@@ -147,6 +143,10 @@ export function Home(){
           eventDescription={event.description}
           deleteEvent={() => deleteEvent(event.id)}
           completeEvent={event.completed}
+          finishEvent={() => {
+            event.completed === false? event.completed = true : event.completed = false
+            console.log(event.completed, event.name)
+          }}
       />)}
 
         </div>
