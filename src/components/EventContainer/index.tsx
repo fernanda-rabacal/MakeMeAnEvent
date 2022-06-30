@@ -2,22 +2,22 @@ import './style.css';
 
 import { Button } from '../Buttons';
 import {IEventContainer} from '../../utils/types';
-import { useState } from 'react';
+import { useState} from 'react';
 
-export function Event({ 
-  eventName,
-  eventCreation,
-  eventEnd,
-  eventStart,
-  eventDescription,
-  completeEvent,
-  deleteEvent,
-  finishEvent,
+export function Event({
+    name,
+    completed,
+    start,
+    end,
+    creation,
+    description,
+    deleteEvent,
+    finishEvent,
 } : IEventContainer){ 
 
   
   const [edit, setEdit] = useState(false);
-  const [name, setName] = useState<string>(eventName);
+  const [newName, setNewName] = useState<string>(name);
 
 
   const handleEdit = () => {
@@ -25,22 +25,21 @@ export function Event({
   };
 
   const saveUpdates = () =>{
+    console.log(newName)
     console.log(name)
-    eventName = name
-    console.log(eventName)
     setEdit(!edit)
   } 
 
   return (
-    <div style={{backgroundColor: completeEvent ? 'rgb(120, 212, 101)' : ""}} className="event-container">
+    <div style={{backgroundColor: completed ? 'rgb(120, 212, 101)' : ""}} className="event-container">
      {!edit ? (<>
       <div className="event-content">
-        <h2>{eventName}</h2>
-        <h4>{eventDescription}</h4>
-        <p>Data de Criação: {eventCreation}</p>
+        <h2>{name}</h2>
+        <h4>{description}</h4>
+        <p>Data de Criação: {creation.toLocaleString("pt-br")}</p>
         <div className="dates">
-          <p>Início: {eventStart.toLocaleString("pt-br")}</p>
-          <p>Termina em: {eventEnd.toLocaleString("pt-br")}</p>
+          <p>Início: {start.toLocaleString("pt-br")}</p>
+          <p>Termina em: {end.toLocaleString("pt-br")}</p>
         </div>
       </div>
       <div className="buttons">
@@ -53,13 +52,13 @@ export function Event({
         <div className="event-content">
           <input type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setNewName(e.target.value)}
            />
-          <h4>{eventDescription}</h4>
-          <p>Data de Criação: {eventCreation}</p>
+          <h4>{description}</h4>
+          <p>Data de Criação: {creation.toLocaleString("pt-br")}</p>
           <div className="dates">
-            <p>Início: {eventStart.toLocaleString("pt-br")}</p>
-            <p>Termina em: {eventEnd.toLocaleString("pt-br")}</p>
+            <p>Início: {start.toLocaleString("pt-br")}</p>
+            <p>Termina em: {end.toLocaleString("pt-br")}</p>
           </div>
         </div>
         <div className="buttons">

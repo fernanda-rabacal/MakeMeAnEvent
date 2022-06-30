@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {Nav} from '../../components/Nav';
 import {Button } from '../../components/Buttons';
 import {Event} from '../../components/EventContainer'
+import {IEventContainer} from '../../utils/types'
 
 
 export function Home(){
@@ -10,7 +11,7 @@ export function Home(){
   const [dateInit, setDateInit] = useState<any>(null)
   const [dateFinal, setDateFinal] = useState<any>(null)
   const [descEvent, setDescEvent] = useState<string>("")
-  const [events, setEvents] = useState<any>([])
+  const [events, setEvents] = useState<IEventContainer[]>([])
   const [search, setSearch] = useState<string>("")
   const [selectedValue, setSelectedValue] = useState<string>("Data de Início")
  
@@ -20,12 +21,12 @@ export function Home(){
   
    const handleSubmit = (e: any) =>{
     e.preventDefault()
-    const newEvent = {
+    const newEvent: IEventContainer = {
       id: new Date().getTime(),
       name: nameEvent,
       start: dateInit,
       end: dateFinal,
-      creation: new Date().toLocaleString("pt-br"),
+      creation: new Date(),
       description: descEvent,
       completed: false
     }
@@ -33,7 +34,7 @@ export function Home(){
   }
   
 
-  function deleteEvent(id: any){
+  function deleteEvent(id: number){
     const updatedEvents = [...events].filter((event) => event.id !== id)  
     
     setEvents(updatedEvents)
@@ -136,16 +137,15 @@ export function Home(){
           {events.filter((event: any) => findEvent(event)).map((event: any) => 
           <Event 
           key={event.id}
-          eventName={event.name} 
-          eventStart={event.start}
-          eventEnd={event.end} 
-          eventCreation={event.creation}
-          eventDescription={event.description}
+          name={event.name} 
+          start={event.start}
+          end={event.end} 
+          creation={event.creation}
+          description={event.description}
           deleteEvent={() => deleteEvent(event.id)}
-          completeEvent={event.completed}
+          completed={event.completed}
           finishEvent={() => {
             event.completed === false? event.completed = true : event.completed = false
-            console.log(event.completed, event.name)
           }}
       />)}
 

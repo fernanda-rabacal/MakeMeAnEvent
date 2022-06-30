@@ -7,14 +7,14 @@ export interface IButton {
 }
 
 export interface IEventContainer {
-    eventName: string,
-    completeEvent: boolean,
-    eventStart?: any,
-    eventEnd?: any,
-    eventCreation?: any,
-    eventDescription?: string,
+    id?: number,
+    name: string,
+    completed: boolean,
+    start: Date,
+    end: Date,
+    creation: Date,
+    description: string,
     deleteEvent?: () => void,
     updateEvent?: () => void,
     finishEvent?: () => void
 }
-
