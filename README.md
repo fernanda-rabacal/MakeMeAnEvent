@@ -8,6 +8,7 @@
 
 #### O que precisa:
 
+- Consertar as tipagens dos elementos
 - Adicionar opção de editar o evento
 - Consertar o fuso horario dos inputs de data
 - Consertar o efeito de sinalizar que um evento foi concluido
