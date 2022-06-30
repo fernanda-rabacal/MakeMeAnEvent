@@ -1,8 +1,34 @@
-# Git Page: https://fernanda-rabacal.github.io/MakeMeAnEvent
+# Projeto Make Me an Event
+
+🇧🇷 Este é um projeto de um site de organização de eventos no estilo de lista de tarefas, onde você pode cadastrar, deletar, pesquisar os eventos e organiza-los por data de criação, data de inicio e data final. 
+
+🇺🇸 This is a event website project based on a to-do-list, where you can register, delete, search for the events and order by creation date, start date and end date.
+
+### Status: In progress 🚧
+
+#### O que precisa:
+
+- Adicionar opção de editar o evento
+- Consertar o fuso horario dos inputs de data
+- Consertar o efeito de sinalizar que um evento foi concluido
+- Melhorar a responsividade e o layout
+- Reorganizar as rotas das paginas
+
+### Skills 🧰
+<div>
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">  
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">  
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/> 
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
+</div>
 
 
+### Git Page: https://fernanda-rabacal.github.io/MakeMeAnEvent
 
-## Getting Started with Create React App
+#
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
