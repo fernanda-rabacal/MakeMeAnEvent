@@ -21,6 +21,11 @@ export function Home(){
   
    const handleSubmit = (e: any) =>{
     e.preventDefault()
+
+    if(!dateFinal || !dateInit){
+      return window.alert("você precisa colocar uma data válida")
+    }
+
     const newEvent: IEventContainer = {
       id: new Date().getTime(),
       name: nameEvent,
@@ -79,14 +84,14 @@ export function Home(){
 
               <div className="hours">
                 <label>Data e Hora de Início
-                  <input type="datetime-local" required onChange={(e: any) => 
+                  <input type="datetime-local" required onBlur={(e: any) => 
                   e.target.valueAsDate < now ?
                       window.alert("Data precisa ser no futuro") : setDateInit(e.target.valueAsDate)
                     } />
                 </label>
               
                 <label>Data e Hora de conclusão
-                  <input type="datetime-local" required onChange={(e: any) =>
+                  <input type="datetime-local" required onBlur={(e: any) =>
                   +e.target.valueAsDate < +dateInit ?
                     window.alert("Data precisa ser no futuro") : setDateFinal(e.target.valueAsDate)
                    } 

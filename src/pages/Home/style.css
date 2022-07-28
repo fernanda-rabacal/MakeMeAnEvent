@@ -5,6 +5,7 @@
   justify-content: center;
   font-family: 'DM Sans', sans-serif;
 }
+
 .my-events h1{
   margin-top: 7vh;
   text-transform: uppercase;
@@ -88,7 +89,7 @@
 
 form {
   padding-block: 3rem;
-  min-width: 58rem;
+  width: 58rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -114,7 +115,7 @@ form {
 
 .App div input{
   margin-inline: 5px;
-  margin-bottom: 1.5rem
+  margin-bottom: 1.5rem;
 }
 
 .task  {
@@ -125,7 +126,11 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem
+  gap: 2rem;
+}
+
+.hours input {
+  width: 18rem
 }
 
 #task-description{
