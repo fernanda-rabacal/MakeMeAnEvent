@@ -16,18 +16,35 @@ export const Page404Container = styled.div`
   }
 
   h4 {  
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
   }
 
   p {  
     color: ${({theme}) => theme.colors["base-purple-dark"]};
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: 2px;
   }
 
   @media (min-width: 550px) {
+    h4 {
+      font-size: 3rem;
+    }
 
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    margin-bottom: 3rem;
+    h4 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 3rem;
+    }
   }
 
 `
