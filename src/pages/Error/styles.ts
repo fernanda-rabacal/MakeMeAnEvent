@@ -51,4 +51,10 @@ export const Page404Container = styled.div`
 
 export const BackToHomeButton = styled(ButtonProps)`
   margin-top: 3rem;
+
+  @media (min-width: 800px) {
+    margin-top: 0;
+    font-size: 2rem;
+
+  }
 `
