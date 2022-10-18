@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { CreateEventForm, HoursContainer, SubmitButton } from "./styles";
 import * as zod from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"; 
-import { useEvent } from "../../hooks/useEvent";
 import { useContext } from "react";
 import { EventContext } from "../../contexts/EventContext";
 
@@ -25,14 +24,10 @@ export function CreateEvent() {
     }
   });
 
-  function handleCreateNewEvent(data: NewEventFormData) {
-    const eventWasSucessfullyCreated = createNewEvent(data)
-    
-    
-    if (eventWasSucessfullyCreated){
+  function handleCreateNewEvent(data: NewEventFormData) {    
+    if (createNewEvent(data)){
       reset()
-    }
-    
+    }    
   }
 
   return(

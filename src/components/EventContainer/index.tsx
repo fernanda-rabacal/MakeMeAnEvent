@@ -6,7 +6,8 @@ import { Buttons, Dates, DatesToEdit, Description, EditEventForm, EventContainer
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-//import { EditEventModal } from '../EditEventModal';
+import { EditEventModal } from '../EditEventModal';
+import { format } from 'date-fns';
 
 const editEventFormValidationSchema = zod.object({
   newName: zod.string().min(1, "Informe o nome do evento"),
@@ -43,8 +44,8 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
     const updatedEvent: Events = {
       id: event.id,
       name: data.newName,
-      start: data.newDateInit,
-      end: data.newDateFinal,
+      start: new Date(data.newDateInit),
+      end: new Date(data.newDateFinal),
       creation: event.creation,
       description: data.newDescEvent,
     }  
@@ -54,20 +55,19 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
     reset()
   }
 
-  
   return (
     <>
     {!edit ? (
-       <EventContainer eventStatus={background}>
-      <Description>
-        <h2>{event.name}</h2>
-        <h3>{event.description}</h3>
-      </Description>
+      <EventContainer eventStatus={background}>
+        <Description>
+          <h2>{event.name}</h2>
+          <h3>{event.description}</h3>
+        </Description>
 
         <Dates>
-          <p><strong>Criado em: </strong>{event.creation}</p>
-          <p><strong>Início: </strong>{event.start}</p>
-          <p><strong>Termina em: </strong>{event.end}</p>
+          <p><strong>Criado em: </strong>{format(new Date(event.creation), "dd/MM/yyyy ',' HH:mm")}</p>
+          <p><strong>Início: </strong>{format(new Date(event.start), "dd/MM/yyyy ',' HH:mm")}</p>
+          <p><strong>Termina em: </strong>{format(new Date(event.start), "dd/MM/yyyy ',' HH:mm")}</p>
         </Dates>
 
       <Buttons>
@@ -91,6 +91,7 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
       </Buttons>
     </EventContainer>
     ) : (
+      <EditEventModal>
         <EditEventForm onSubmit={handleSubmit(handleUpdateEvent)}>
           <h1>Editar evento - <strong>{event.name}</strong></h1>
           <div className="form-inputs">
@@ -122,8 +123,7 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
             </DatesToEdit>
             
             <label> Descrição
-              <input
-                type='text' 
+              <textarea
                 className='task' 
                 id="newDescEvent" 
                 {...register("newDescEvent")} 
@@ -153,6 +153,7 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
               />
           </Buttons>
         </EditEventForm>
+      </EditEventModal>
       )
     }
    </>  

@@ -1,8 +1,8 @@
 export interface Events {
     id: string,
     name: string,
-    start: string,
-    end: string,
-    creation: string,
+    start: Date,
+    end: Date,
+    creation: Date,
     description: string,
 }

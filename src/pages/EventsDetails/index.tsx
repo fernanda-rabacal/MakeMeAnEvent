@@ -3,7 +3,6 @@ import { EventsListContainer, MyEventsContainer, OptionsContainer } from './styl
 import { useContext, useEffect, useState } from "react";
 import { Event } from '../../components/EventContainer';
 import { EventContext } from '../../contexts/EventContext';
-import { useEvent } from '../../hooks/useEvent';
 
 enum FilterTypes {
   START_DATE = "START_DATE",
@@ -15,7 +14,7 @@ export function EventsDetails(){
   const [search, setSearch] = useState("")
   const [selectedValue, setSelectedValue] = useState<string>(FilterTypes.START_DATE)
 
-  const { events } = useEvent()
+  const { events, updateEvent, deleteEvent, findEvent } = useContext(EventContext)
   
   useEffect(() => {
       if(selectedValue === FilterTypes.START_DATE){
@@ -31,7 +30,7 @@ export function EventsDetails(){
   }, [events, selectedValue])
   
   return(
-    <MyEventsContainer className='container'>
+    <MyEventsContainer>
         <h1>Meus Eventos</h1>
           <input 
               title="Pesquisar evento"
@@ -61,7 +60,14 @@ export function EventsDetails(){
           </OptionsContainer>
 
           <EventsListContainer>
-
+            {events.filter((event) => findEvent(event, search)).map((event) => 
+                <Event 
+                  key={event.id}
+                  event={event}
+                  onUpdateEvent={updateEvent}
+                  deleteEvent={() => deleteEvent(event.id)}
+                  />
+              )}
           </EventsListContainer>
       </MyEventsContainer>
     );

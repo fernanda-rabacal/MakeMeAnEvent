@@ -24,8 +24,11 @@ export function updateEventAction(updatedEvent: Event) {
   }
 }
 
-export function deleteEventAction() {
+export function deleteEventAction(eventId: string) {
   return {
     type: ActionTypes.DELETE_EVENT,
+    payload: {
+      eventId
+    }
   }
 }

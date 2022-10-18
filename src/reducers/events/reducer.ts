@@ -1,20 +1,12 @@
 import { ActionTypes } from "./actions"
 import { produce } from "immer"
+import { Events } from "../../utils/types"
 
-export interface Event {
-  id: string
-  name: string
-  description: string
-  start: string
-  end: string
-  creation: string
+interface EventsProps {
+  events: Events[]
 }
 
-interface Events {
-  events: Event[]
-}
-
-export function EventReducers(state: Events, action: any) {
+export function EventReducers(state: EventsProps, action: any) {
   switch(action.type) {
     case ActionTypes.CREATE_NEW_EVENT: 
       return produce(state, draft => {
@@ -32,6 +24,20 @@ export function EventReducers(state: Events, action: any) {
 
       return produce(state, draft => {
         draft.events[updatedEventIndex] = action.payload.updatedEvent
+      })
+    }
+
+    case ActionTypes.DELETE_EVENT: {
+      const eventToDeleteIndex = state.events.findIndex(event => {
+        return event.id === action.payload.eventId
+      })
+
+      if(eventToDeleteIndex < 0){
+        return state
+      }
+
+      return produce(state, draft => {
+        draft.events.splice(eventToDeleteIndex, 1)
       })
     }
 
