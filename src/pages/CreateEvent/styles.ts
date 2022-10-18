@@ -4,7 +4,7 @@ import { ButtonProps } from "../../components/Button";
 export const CreateEventForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 60%;
   margin-bottom: 3rem;
   
   h1 {

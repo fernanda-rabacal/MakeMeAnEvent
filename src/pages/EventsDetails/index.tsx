@@ -1,7 +1,9 @@
 import { Circle } from 'phosphor-react';
 import { EventsListContainer, MyEventsContainer, OptionsContainer } from './styles';
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Event } from '../../components/EventContainer';
+import { EventContext } from '../../contexts/EventContext';
+import { useEvent } from '../../hooks/useEvent';
 
 enum FilterTypes {
   START_DATE = "START_DATE",
@@ -13,6 +15,20 @@ export function EventsDetails(){
   const [search, setSearch] = useState("")
   const [selectedValue, setSelectedValue] = useState<string>(FilterTypes.START_DATE)
 
+  const { events } = useEvent()
+  
+  useEffect(() => {
+      if(selectedValue === FilterTypes.START_DATE){
+        events.sort((a, b) => +a.start > +b.start ? -1 : 1)
+      }
+      if (selectedValue === FilterTypes.CREATION_DATE) {
+        events.sort((a, b) =>  +a.creation < +b.creation ? -1 : 1) 
+      }
+      if (selectedValue === FilterTypes.END_DATE) {
+        events.sort((a, b) =>  +a.end < +b.end ? -1 : 1)
+      }
+    
+  }, [events, selectedValue])
   
   return(
     <MyEventsContainer className='container'>
@@ -44,11 +60,9 @@ export function EventsDetails(){
             </label>
           </OptionsContainer>
 
-
           <EventsListContainer>
-            
+
           </EventsListContainer>
-      
       </MyEventsContainer>
     );
 }

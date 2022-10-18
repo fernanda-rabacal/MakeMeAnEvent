@@ -6,7 +6,7 @@ import { Buttons, Dates, DatesToEdit, Description, EditEventForm, EventContainer
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
-import { EditEventModal } from '../EditEventModal';
+//import { EditEventModal } from '../EditEventModal';
 
 const editEventFormValidationSchema = zod.object({
   newName: zod.string().min(1, "Informe o nome do evento"),
@@ -91,7 +91,6 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
       </Buttons>
     </EventContainer>
     ) : (
-      <EditEventModal>
         <EditEventForm onSubmit={handleSubmit(handleUpdateEvent)}>
           <h1>Editar evento - <strong>{event.name}</strong></h1>
           <div className="form-inputs">
@@ -154,7 +153,6 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
               />
           </Buttons>
         </EditEventForm>
-      </EditEventModal>
       )
     }
    </>  
