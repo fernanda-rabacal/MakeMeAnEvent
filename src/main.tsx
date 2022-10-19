@@ -10,7 +10,7 @@ import { defaultTheme } from './styles/defaultTheme';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <EventContextProvider>
           <App />
           <GlobalStyle />

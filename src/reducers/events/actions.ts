@@ -1,4 +1,4 @@
-import { Event } from "./reducer"
+import { Events } from "../../utils/types"
 
 export enum ActionTypes {
   CREATE_NEW_EVENT = "CREATE_NEW_EVENT",
@@ -6,7 +6,7 @@ export enum ActionTypes {
   DELETE_EVENT = "DELETE_EVENT"
 }
 
-export function createNewEventAction(newEvent: Event) {
+export function createNewEventAction(newEvent: Events) {
   return {
     type: ActionTypes.CREATE_NEW_EVENT,
     payload: {
@@ -15,7 +15,7 @@ export function createNewEventAction(newEvent: Event) {
   }
 }
 
-export function updateEventAction(updatedEvent: Event) {
+export function updateEventAction(updatedEvent: Events) {
   return {
     type: ActionTypes.UPDATE_EVENT,
     payload: {
