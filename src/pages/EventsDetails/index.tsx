@@ -41,9 +41,9 @@ export function EventsDetails(){
 
           <OptionsContainer>
             <div className='dot-row'>
-              <Circle size={22} color="#9e2424" weight="fill"  />
+              <Circle size={22} color="#ffb622" weight="fill"  />
               <p>Não realizado</p>
-              <Circle size={22} color="#4d63dd" weight="fill"  />
+              <Circle size={22} color="#DA70D6" weight="fill"  />
               <p>A ser realizado</p>
               <Circle size={22} color="#78d465" weight="fill"  />
               <p>Realizado</p>

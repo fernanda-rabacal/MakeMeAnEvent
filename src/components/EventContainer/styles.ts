@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface EventContainerProps {
   eventStatus: boolean
+  overdued: boolean
 }
 
 
@@ -11,7 +12,7 @@ export const EventContainer = styled.div<EventContainerProps>`
   max-width: 30rem;
   height: 25rem;
   box-sizing: border-box;
-  background: ${({theme}) => theme.colors["base-purple"]};
+  background: ${({theme, eventStatus, overdued}) => theme.colors[`base-${ overdued ? "orange" : eventStatus ? "green" : "purple"}`]};
   padding: 2rem;
   margin: 1rem;
   border-radius: 10px;

@@ -6,7 +6,7 @@ export const MyEventsContainer = styled.div`
   text-transform: uppercase;
   align-items: center;
   margin-inline: 5rem;
-  margin-top: 3rem;
+  margin-block: 3rem;
   font-size: 1.4rem;
 
   >input {

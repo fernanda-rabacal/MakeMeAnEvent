@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import { EditEventModal } from '../EditEventModal';
-import { format } from 'date-fns';
+import { compareDesc, format } from 'date-fns';
 
 const editEventFormValidationSchema = zod.object({
   newName: zod.string().min(1, "Informe o nome do evento"),
@@ -55,10 +55,20 @@ export function Event({ event, deleteEvent, onUpdateEvent } : EventProps ){
     reset()
   }
 
+  function isOverdued() {
+    const isOverdued = compareDesc(new Date(event.start), new Date())
+    
+    if(isOverdued === 1) {
+      return true
+    }
+
+    return false
+  }
+
   return (
     <>
     {!edit ? (
-      <EventContainer eventStatus={background}>
+      <EventContainer eventStatus={background} overdued={isOverdued()}>
         <Description>
           <h2>{event.name}</h2>
           <h3>{event.description}</h3>

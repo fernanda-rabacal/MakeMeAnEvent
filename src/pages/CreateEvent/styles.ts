@@ -10,6 +10,7 @@ export const CreateEventForm = styled.form`
   h1 {
     text-align: center;
     text-transform: uppercase;
+    font-size: 2.5rem;
   }
 
   label {
