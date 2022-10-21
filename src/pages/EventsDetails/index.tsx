@@ -16,7 +16,7 @@ export function EventsDetails(){
 
   const { events, updateEvent, deleteEvent, findEvent } = useContext(EventContext)
   
-  /* useEffect(() => {
+  useEffect(() => {
       if(selectedValue === FilterTypes.START_DATE){
         events.sort((a, b) => +a.start > +b.start ? -1 : 1)
       }
@@ -27,7 +27,7 @@ export function EventsDetails(){
         events.sort((a, b) =>  +a.end < +b.end ? -1 : 1)
       }
     
-  }, [events, selectedValue]) */
+  }, [events, selectedValue])
   
   return(
     <MyEventsContainer>
