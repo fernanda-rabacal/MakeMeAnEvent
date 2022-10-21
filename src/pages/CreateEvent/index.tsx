@@ -4,6 +4,7 @@ import * as zod from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod"; 
 import { useContext } from "react";
 import { EventContext } from "../../contexts/EventContext";
+import { useNavigate } from "react-router-dom";
 
 const newEventFormValidationSchema = zod.object({
   name: zod.string().min(1, "Informe o nome do evento"),
@@ -24,9 +25,12 @@ export function CreateEvent() {
     }
   });
 
+  const navigate = useNavigate()
+
   function handleCreateNewEvent(data: NewEventFormData) {    
     if (createNewEvent(data)){
       reset()
+      navigate("/my-events")
     }    
   }
 

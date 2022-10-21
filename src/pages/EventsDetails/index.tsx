@@ -18,7 +18,7 @@ export function EventsDetails(){
   
   useEffect(() => {
       if(selectedValue === FilterTypes.START_DATE){
-        events.sort((a, b) => +a.start > +b.start ? -1 : 1)
+        [...events].sort((a, b) => +a.start > +b.start ? -1 : 1)
       }
       if (selectedValue === FilterTypes.CREATION_DATE) {
         events.sort((a, b) =>  +a.creation < +b.creation ? -1 : 1) 
