@@ -16,19 +16,30 @@ export function EventsDetails(){
 
   const { events, updateEvent, deleteEvent, findEvent } = useContext(EventContext)
   
-  useEffect(() => {
+  
+  function sortingEvents() {
       if(selectedValue === FilterTypes.START_DATE){
-        [...events].sort((a, b) => +a.start > +b.start ? -1 : 1)
+       const startDateSortedEvents = [...events].sort((a, b) => +a.start > +b.start ? -1 : 1)
+
+       return startDateSortedEvents
       }
       if (selectedValue === FilterTypes.CREATION_DATE) {
-        events.sort((a, b) =>  +a.creation < +b.creation ? -1 : 1) 
+        const creationDateSortedEvents = [...events].sort((a, b) =>  +a.creation < +b.creation ? -1 : 1) 
+        return creationDateSortedEvents
       }
       if (selectedValue === FilterTypes.END_DATE) {
-        events.sort((a, b) =>  +a.end < +b.end ? -1 : 1)
+        const endDateSortedEvents = [...events].sort((a, b) =>  +a.end < +b.end ? -1 : 1)
+        return endDateSortedEvents  
       }
-    
-  }, [events, selectedValue])
-  
+
+      return events
+    }
+      
+    useEffect(() => {
+        sortingEvents()
+        console.log(selectedValue)
+    }, [events, selectedValue])
+
   return(
     <MyEventsContainer>
         <h1>Meus Eventos</h1>
@@ -60,7 +71,7 @@ export function EventsDetails(){
           </OptionsContainer>
 
           <EventsListContainer>
-            {events.filter((event) => findEvent(event, search)).map((event) => 
+            {sortingEvents().filter((event) => findEvent(event, search)).map((event) => 
                 <Event 
                   key={event.id}
                   event={event}
