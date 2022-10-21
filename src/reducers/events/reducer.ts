@@ -22,9 +22,14 @@ export function EventReducers(state: EventsProps, action: any) {
         return state
       }
 
-      return produce(state, draft => {
-        draft.events[updatedEventIndex] = action.payload.updatedEvent
-      })
+      try {
+        return produce(state, draft => {
+          draft.events[updatedEventIndex] = action.payload.updatedEvent
+        })
+      } catch(e) {
+        console.log("sabosta da erro")
+      }
+
     }
 
     case ActionTypes.DELETE_EVENT: {

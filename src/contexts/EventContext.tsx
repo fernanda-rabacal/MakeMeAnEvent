@@ -26,7 +26,6 @@ interface CreateEventData {
 export const EventContext = createContext({} as EventContextType);
 
 export function EventContextProvider({ children } : EventContextProviderProps) {
-
   const [eventsState, dispatch] = useReducer(EventReducers, {
     events: []
   }, () => {
