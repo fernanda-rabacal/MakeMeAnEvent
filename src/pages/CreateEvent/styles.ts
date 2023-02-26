@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonProps } from "../../components/Button";
+import { ButtonProps } from "../../components/Buttons/Button";
 
 export const CreateEventForm = styled.form`
   display: flex;

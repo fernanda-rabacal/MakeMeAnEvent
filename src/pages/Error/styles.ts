@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ButtonProps } from "../../components/Button";
+import { ButtonProps } from "../../components/Buttons/Button";
 
 export const Page404Container = styled.div`
   height: 100%;
@@ -12,7 +12,7 @@ export const Page404Container = styled.div`
   h1 {  
     font-size: 20rem;
     margin: 0;
-    color: ${({theme}) => theme.colors["base-purple-dark"]};
+    color: ${({ theme }) => theme.colors["base-purple-dark"]};
   }
 
   h4 {  
@@ -21,7 +21,7 @@ export const Page404Container = styled.div`
   }
 
   p {  
-    color: ${({theme}) => theme.colors["base-purple-dark"]};
+    color: ${({ theme }) => theme.colors["base-purple-dark"]};
     font-size: 1.8rem;
     letter-spacing: 2px;
   }

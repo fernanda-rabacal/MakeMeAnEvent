@@ -16,11 +16,9 @@ export function EventsDetails(){
 
   const { events, updateEvent, deleteEvent, findEvent } = useContext(EventContext)
   
-  
   function sortingEvents() {
       if(selectedValue === FilterTypes.START_DATE){
        const startDateSortedEvents = [...events].sort((a, b) => +a.start > +b.start ? -1 : 1)
-
        return startDateSortedEvents
       }
       if (selectedValue === FilterTypes.CREATION_DATE) {
@@ -37,7 +35,6 @@ export function EventsDetails(){
       
     useEffect(() => {
         sortingEvents()
-        console.log(selectedValue)
     }, [events, selectedValue])
 
   return(
@@ -63,9 +60,9 @@ export function EventsDetails(){
             <label>
                 Organizar por:
                 <select id="selectOptions" onChange={(e) => { setSelectedValue(e.target.value)}}>
-                <option value={FilterTypes.START_DATE}>Data de Início</option>
-                <option value={FilterTypes.END_DATE}>Data Final</option>
-                <option value={FilterTypes.CREATION_DATE}>Data de Criação</option>
+                  <option value={FilterTypes.START_DATE}>Data de Início</option>
+                  <option value={FilterTypes.END_DATE}>Data Final</option>
+                  <option value={FilterTypes.CREATION_DATE}>Data de Criação</option>
                 </select>
             </label>
           </OptionsContainer>

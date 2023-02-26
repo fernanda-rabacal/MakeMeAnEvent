@@ -15,7 +15,6 @@ interface EventContextType {
 interface EventContextProviderProps {
   children: ReactNode;
 }
-
 interface CreateEventData {
   name: string,
   start: string,
