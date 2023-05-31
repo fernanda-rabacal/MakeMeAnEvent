@@ -4,9 +4,7 @@ import { CreateEventButton, HomeContainer } from './styles';
 export function Home() {
   return (
     <HomeContainer>
-      <h1>
-      CRIE MOMENTOS QUE DURAM A VIDA TODA
-      </h1> 
+      <h1>CRIE MOMENTOS QUE DURAM A VIDA TODA</h1> 
 
       <NavLink to="/create-event">
         <CreateEventButton>

@@ -15,6 +15,7 @@ interface EventContextType {
 interface EventContextProviderProps {
   children: ReactNode;
 }
+
 interface CreateEventData {
   name: string,
   start: string,
@@ -25,14 +26,10 @@ interface CreateEventData {
 export const EventContext = createContext({} as EventContextType);
 
 export function EventContextProvider({ children } : EventContextProviderProps) {
-  const [eventsState, dispatch] = useReducer(EventReducers, {
-    events: []
-  }, () => {
-    const storageStateAsJSON = localStorage.getItem('@make-me-an-event:events-1.0.0')
+  const storageStateAsJSON = localStorage.getItem('@make-me-an-event:events-1.0.0')
 
-    if (storageStateAsJSON) {
-      return JSON.parse(storageStateAsJSON)
-    }
+  const [eventsState, dispatch] = useReducer(EventReducers, {
+    events: storageStateAsJSON ? JSON.parse(storageStateAsJSON).events : []
   })
 
   const { events } = eventsState;

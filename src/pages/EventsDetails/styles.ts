@@ -8,6 +8,7 @@ export const MyEventsContainer = styled.div`
   margin-inline: 5rem;
   margin-block: 3rem;
   font-size: 1.4rem;
+  min-height: 73vh;
 
   >input {
     width: 100%;
